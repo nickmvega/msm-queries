@@ -1,0 +1,36 @@
+<body>
+  <h1>List of all directors</h1>
+  <hr>
+
+  <table border="1">
+    <tr>
+      <th>ID</th>
+      <th>Image</th>
+      <th>Name</th>
+      <th>Dob</th>
+      <th>Details</th>
+    </tr>
+
+    <% @directors.each do |director| %>
+      <tr>
+        <td><%= director.id %></td>
+        <td>
+          <% if director.image.present? %>
+            <img src="<%= director.image %>" style="width:250px;">
+          <% end %>
+        </td>
+        <td><%= director.name %></td>
+        <td>
+          <% if director.dob.present? %>
+            <%= director.dob.strftime("%Y-%m-%d") %>
+          <% else %>
+            N/A
+          <% end %>
+        </td>
+        <td>
+          <a href="/directors/<%= director.id %>">Show details</a>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</body>
